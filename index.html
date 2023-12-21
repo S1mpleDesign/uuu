@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unitydesign</title>
+    <style>
+      body {
+        background-color: #000000; 
+      }
+        .unity-design {
+          
+            position: absolute;
+            animation: floatAnimation 3s infinite ease-in-out, rotateAnimation 10s infinite linear, scaleAnimation 2s infinite alternate, changeStyle 5s infinite alternate;
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-200px);
+            }
+        }
+
+        @keyframes rotateAnimation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes scaleAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(2);
+            }
+
+            
+        }
+
+       
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const numberOfTexts = 100;
+
+            for (let i = 0; i < numberOfTexts; i++) {
+                createUnityDesignText();
+            }
+
+            function createUnityDesignText() {
+                const unityDesignText = document.createElement('div');
+                unityDesignText.className = 'unity-design';
+                unityDesignText.innerText = 'unitydesign';
+
+                const randomX = Math.random() * window.innerWidth;
+                const randomY = Math.random() * window.innerHeight;
+
+                const randomSize = Math.floor(Math.random() * 30) + 10; // Random size between 10 and 40 pixels
+                const randomColor = getRandomColor();
+                const randomRotation = Math.floor(Math.random() * 360); // Random rotation between 0 and 360 degrees
+
+                unityDesignText.style.left = randomX + 'px';
+                unityDesignText.style.top = randomY + 'px';
+                unityDesignText.style.fontSize = randomSize + 'px';
+                unityDesignText.style.color = randomColor;
+                unityDesignText.style.transform = `rotate(${randomRotation}deg)`;
+
+                document.body.appendChild(unityDesignText);
+            }
+
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        });
+    </script>
+</body>
+</html>
